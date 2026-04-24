@@ -5,7 +5,9 @@ A [code-server](https://github.com/coder/code-server) Docker image with the [Cla
 ## What's inside
 
 - `codercom/code-server:4.114.1` — browser-based VS Code
-- `claude` CLI — latest version, installed via the official install script
+- `claude` CLI `2.1.109` — installed via the official install script
+- `nvm` `0.40.3` — Node.js version manager with LTS pre-installed
+- Persistent Claude config — `~/.claude.json` is symlinked to a backups directory so settings survive container recreation
 
 ## Usage
 

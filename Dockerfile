@@ -2,6 +2,13 @@ FROM codercom/code-server:4.114.1
 
 RUN curl -fsSL https://claude.ai/install.sh | bash -s -- 2.1.109
 
+# Install nvm for flexible Node.js version management
+ENV NVM_DIR="/home/coder/.nvm"
+RUN curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash \
+    && . "$NVM_DIR/nvm.sh" \
+    && nvm install --lts \
+    && nvm alias default lts/*
+
 # Patch the upstream code-server entrypoint to restore the persisted Claude
 # config on every container start. Runtime mkdir is required because a volume
 # mount over /home/coder/.claude would wipe anything created at build time.
